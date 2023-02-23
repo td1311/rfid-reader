@@ -46,6 +46,19 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    flavorDimensions "environment"
+    productFlavors {
+        development {
+            dimension "environment"
+            applicationIdSuffix ".dev"
+            buildConfigField("String", "BASE_URL", '"https://baseurl.dev"')
+        }
+        staging {
+            dimension "environment"
+            applicationIdSuffix ".stg"
+            buildConfigField("String", "BASE_URL", '"https://baseurl.stg"')
+        }
+    }
 }
 
 dependencies {
@@ -67,6 +80,7 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     // Room
     def room_version = "2.5.0"
