@@ -2,6 +2,8 @@ package com.example.rfid_reader.di
 
 import android.content.Context
 import com.example.rfid_reader.BuildConfig
+import com.example.rfid_reader.service.inventory.InventoryApiHelper
+import com.example.rfid_reader.service.inventory.InventoryApiHelperImpl
 import com.example.rfid_reader.service.inventory.InventoryApiService
 import dagger.Module
 import dagger.Provides
@@ -35,4 +37,9 @@ object RetrofitModules {
     @Singleton
     fun provideInventoryApiService(retrofit: Retrofit): InventoryApiService =
         retrofit.create(InventoryApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideInventoryApiHelper(inventoryApiHelper: InventoryApiHelperImpl): InventoryApiHelper =
+        inventoryApiHelper
 }
